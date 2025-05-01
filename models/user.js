@@ -33,7 +33,7 @@ const userSchema = Schema({
 }, {timestamps: true});
 
 userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({_id: this._id, role: this.role, email: this.email, name: this.name}, process.env.JET_SECRET_KEY, {expiresIn: "7d"});
+    const token = jwt.sign({_id: this._id, role: this.role, email: this.email, name: this.name}, process.env.JWT_SECRET_KEY, {expiresIn: "7d"});
     return token;
 };
 
@@ -46,5 +46,5 @@ const validatUser = user => {
     return schema.validate(user);
 }
 
-module.exports = model("User", userSchema);
+module.exports.User = model("User", userSchema);
 module.exports.validate = validatUser;

@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 
 
-router.route("signup")
+router.route("/signup")
     .post(SingUp)
 
 router.route("/signin")
